@@ -51,9 +51,9 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               Container(
-                 height: 250,
-                 decoration: BoxDecoration(
-                   borderRadius: BorderRadius.circular(20),
+                height: 250,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
                     image: AssetImage('assets/images/one.jpg'),
                     fit: BoxFit.cover,
@@ -93,7 +93,9 @@ class _HomePageState extends State<HomePage> {
                         child: Center(
                           child: Text(
                             'Shop Now',
-                            style: TextStyle(color: Colors.grey[900]),
+                            style: TextStyle(
+                                color: Colors.grey[900],
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -102,22 +104,38 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+              SizedBox(height: 20),
               Expanded(
                 child: GridView.count(
                   crossAxisCount: 2,
-                  padding: EdgeInsets.all(20),
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
                   children: _listItem
                       .map((item) => Card(
-                    child: Container(
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(item),
-                            fit: BoxFit.cover,
-                          )),
-                    ),
-                  ))
+                            color: Colors.transparent,
+                            elevation: 0,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20),
+                                  image: DecorationImage(
+                                    image: AssetImage(item),
+                                    fit: BoxFit.cover,
+                                  )),
+                              child: Transform.translate(
+                                offset: Offset(50, -50),
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 65, vertical: 63),
+                                  width:30,
+                                  height: 40,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Icon(Icons.bookmark),
+                                ),
+                              ),
+                            ),
+                          ))
                       .toList(),
                 ),
               ),
